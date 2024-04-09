@@ -1,42 +1,42 @@
 
 <h1 align="center">Hi 👋, I'm Said Sef</h1>
 
-![Amazon AWS](https://img.shields.io/badge/Amazon%20AWS-black?style=flat-square&logo=amazon-aws)
-![Google Cloud](https://img.shields.io/badge/Google%20Cloud-black?style=flat-square&logo=google-cloud)
-![Linux](https://img.shields.io/badge/-Linux-black?style=flat-square&logo=Linux)
-![Bash](https://img.shields.io/badge/-Bash-black?style=flat-square&logo=gnu-bash)
-![Terraform](https://img.shields.io/badge/-Terraform-black?style=flat-square&logo=Terraform)
-![Terraform Cloud](https://img.shields.io/badge/-Terraform&nbsp;Cloud-black?style=flat-square&logo=Terraform)
-![Golang](https://img.shields.io/badge/-Golang-black?style=flat-square&logo=go)
-![NodeJS](https://img.shields.io/badge/-NodeJS-black?style=flat-square&logo=node.js) 
-![Python](https://img.shields.io/badge/-Python-black?style=flat-square&logo=Python)
-![Docker](https://img.shields.io/badge/-Docker-black?style=flat-square&logo=docker)
-![Kubernetes](https://img.shields.io/badge/-Kubernetes-black?style=flat-square&logo=Kubernetes)
-![ArgoCD](https://img.shields.io/badge/-ArgoCD-black?style=flat-square&logo=argo)
-![HELM](https://img.shields.io/badge/-HELM-black?style=flat-square&logo=HELM)
-![Git](https://img.shields.io/badge/-Git-black?style=flat-square&logo=git)
-![GitHub](https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=github)
-![GitLab](https://img.shields.io/badge/-GitLab-black?style=flat-square&logo=gitlab)
-![PostgreSql](https://img.shields.io/badge/-PostgreSQL-black?style=flat-square&logo=PostgreSQL)
-![Redis](https://img.shields.io/badge/-Redis-black?style=flat-square&logo=Redis)
-![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-black?style=flat-square&logo=ElasticSearch)
-![Prometheus](https://img.shields.io/badge/-Prometheus-black?style=flat-square&logo=Prometheus)
-![Grafana](https://img.shields.io/badge/-Grafana-black?style=flat-square&logo=Grafana)
-![Splunk](https://img.shields.io/badge/-Splunk-black?style=flat-square&logo=Splunk)
-![Consul](https://img.shields.io/badge/-Consul-black?style=flat-square&logo=Consul)
-![Vault](https://img.shields.io/badge/-Vault-black?style=flat-square&logo=Vault)
-![Tekton](https://img.shields.io/badge/-Tekton-black?style=flat-square&logo=Tekton)
-![Jenkins](https://img.shields.io/badge/-Jenkins-black?style=flat-square&logo=Jenkins)
-![GitHub Actions](https://img.shields.io/badge/-GitHub&nbsp;Actions-black?style=flat-square&logo=GitHub-Actions)
-![DroneCI](https://img.shields.io/badge/-DroneCI-black?style=flat-square&logo=Drone)
-![scikit-learn](https://img.shields.io/badge/-scikit--learn-black?style=flat-square&logo=scikit-learn)
-![OpenAI](https://img.shields.io/badge/-OpenAI-black?style=flat-square&logo=OpenAI)
+![Amazon AWS](https://img.shields.io/badge/Amazon%20AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/Google%20Cloud-4285F4?style=flat&logo=google-cloud&logoColor=white)
+![Linux](https://img.shields.io/badge/-Linux-FFFFEE?style=flat&logo=Linux&logoColor=black)
+![Bash](https://img.shields.io/badge/-Bash-4EAA25?style=flat&logo=gnu-bash&logoColor=white)
+![Terraform](https://img.shields.io/badge/-Terraform-623CE4?style=flat&logo=Terraform&logoColor=white)
+![Terraform Cloud](https://img.shields.io/badge/-Terraform&nbsp;Cloud-623CE4?style=flat&logo=Terraform&logoColor=white)
+![Golang](https://img.shields.io/badge/-Golang-00ADD8?style=flat&logo=go&logoColor=white)
+![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat&logo=node.js&logoColor=white) 
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=Python&logoColor=white)
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=flat&logo=Kubernetes&logoColor=white)
+![ArgoCD](https://img.shields.io/badge/-ArgoCD-FFA500?style=flat&logo=argo&logoColor=white)
+![HELM](https://img.shields.io/badge/-HELM-0F1689?style=flat&logo=HELM&logoColor=white)
+![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white)
+![GitLab](https://img.shields.io/badge/-GitLab-FCA121?style=flat&logo=gitlab&logoColor=white)
+![PostgreSql](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat&logo=PostgreSQL&logoColor=white)
+![Redis](https://img.shields.io/badge/-Redis-DC382D?style=flat&logo=Redis&logoColor=white)
+![ElasticSearch](https://img.shields.io/badge/-ElasticSearch-005571?style=flat&logo=ElasticSearch&logoColor=white)
+![Prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=flat&logo=Prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat&logo=Grafana&logoColor=white)
+![Splunk](https://img.shields.io/badge/-Splunk-000000?style=flat&logo=Splunk&logoColor=white)
+![Consul](https://img.shields.io/badge/-Consul-CA2171?style=flat&logo=Consul&logoColor=white)
+![Vault](https://img.shields.io/badge/-Vault-000000?style=flat&logo=Vault&logoColor=white)
+![Tekton](https://img.shields.io/badge/-Tekton-0D9FEA?style=flat&logo=Tekton&logoColor=white)
+![Jenkins](https://img.shields.io/badge/-Jenkins-D24939?style=flat&logo=Jenkins&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/-GitHub&nbsp;Actions-2088FF?style=flat&logo=GitHub-Actions&logoColor=white)
+![DroneCI](https://img.shields.io/badge/-DroneCI-212121?style=flat&logo=Drone&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
+![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat&logo=OpenAI&logoColor=white)
 
-<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=radical&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
+<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=transparent&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
 
 <p align="center">
-  <a href="https://twitter.com/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-twitter-black?style=for-the-badge&logo=twitter" alt="saidsef"/></a> 
-  <a href="https://www.linkedin.com/in/saidsef/" target="blank"><img align="center" src="https://img.shields.io/badge/-linkedin-black?style=for-the-badge&logo=linkedin" alt="saidsef"/></a>
-  <a href="https://registry.terraform.io/namespaces/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-Terraform-black?style=for-the-badge&logo=Terraform" alt="saidsef"/></a>
-  <a href="https://artifacthub.io/packages/search?org=saidsef&sort=relevance&page=1" target="blank"><img align="center" src="https://img.shields.io/badge/-artifacthub-black?style=for-the-badge&logo=artifacthub" alt="saidsef"/></a>
+  <a href="https://twitter.com/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="saidsef"/></a> 
+  <a href="https://www.linkedin.com/in/saidsef/" target="blank"><img align="center" src="https://img.shields.io/badge/-linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="saidsef"/></a>
+  <a href="https://registry.terraform.io/namespaces/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-Terraform-7B42BC?style=for-the-badge&logo=Terraform&logoColor=white" alt="saidsef"/></a>
+  <a href="https://artifacthub.io/packages/search?org=saidsef&sort=relevance&page=1" target="blank"><img align="center" src="https://img.shields.io/badge/-artifacthub-4181C2?style=for-the-badge&logo=artifacthub&logoColor=white" alt="saidsef"/></a>
 </p>
