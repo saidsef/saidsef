@@ -32,7 +32,7 @@
 ![scikit-learn](https://img.shields.io/badge/-scikit--learn-black?style=flat-square&logo=scikit-learn)
 ![OpenAI](https://img.shields.io/badge/-OpenAI-black?style=flat-square&logo=OpenAI)
 
-<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=transparent&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
+<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=radical&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
 
 <p align="center">
   <a href="https://twitter.com/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-twitter-black?style=for-the-badge&logo=twitter" alt="saidsef"/></a> 
