@@ -11,6 +11,7 @@
 ![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=for-the-badge&logo=node.js&logoColor=white) 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=Python&logoColor=white)
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kaniko](https://img.shields.io/badge/-Kaniko-2496ED?style=for-the-badge&logo=kaniko&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=for-the-badge&logo=Kubernetes&logoColor=white)
 ![ArgoCD](https://img.shields.io/badge/-ArgoCD-FFA500?style=for-the-badge&logo=argo&logoColor=white)
 ![HELM](https://img.shields.io/badge/-HELM-0F1689?style=for-the-badge&logo=HELM&logoColor=white)
