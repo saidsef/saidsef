@@ -1,15 +1,20 @@
-name: "Pull Request Labeler"
+name: Issues
+
 on:
-- pull_request_target
+  issues:
+    types: [opened]
 
 jobs:
-  labeler:
-    permissions:
-      contents: read
-      pull-requests: write
+  comment:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/labeler@v5
-      with:
-        dot: "true"
-        sync-labels: "true"
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Hi and Thanks for Reporting!',
+              labels: ['Triage']
+            })
