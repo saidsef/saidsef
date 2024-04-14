@@ -13,8 +13,8 @@
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kaniko](https://img.shields.io/badge/-Kaniko-FFFFFF?style=for-the-badge&logo=kaniko&logoColor=FFA500)
 ![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=for-the-badge&logo=Kubernetes&logoColor=white)
-![ArgoCD](https://img.shields.io/badge/-ArgoCD-FFA500?style=for-the-badge&logo=argo&logoColor=white)
-![HELM](https://img.shields.io/badge/-HELM-0F1689?style=for-the-badge&logo=HELM&logoColor=white)
+![ArgoCD](https://img.shields.io/badge/-ArgoCD-FFFFFF?style=for-the-badge&logo=argo&logoColor=FFA500)
+![HELM](https://img.shields.io/badge/-HELM-FFFFFF?style=for-the-badge&logo=HELM&logoColor=0F1689)
 ![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![GitLab](https://img.shields.io/badge/-GitLab-FCA121?style=for-the-badge&logo=gitlab&logoColor=white)
@@ -31,6 +31,8 @@
 ![GitHub Actions](https://img.shields.io/badge/-GitHub&nbsp;Actions-2088FF?style=for-the-badge&logo=GitHub-Actions&logoColor=white)
 ![DroneCI](https://img.shields.io/badge/-DroneCI-212121?style=for-the-badge&logo=Drone&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/-Pandas-FFFFFF?style=for-the-badge&logo=Pandas&logoColor=000000)
+![Jupyter](https://img.shields.io/badge/-Jupyter-F7931E?style=for-the-badge&logo=Jupyter&logoColor=FFFFFF)
 ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white)
 
 <p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=transparent&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
