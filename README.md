@@ -38,8 +38,9 @@
 <p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=transparent&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
 
 <p align="center">
-  <a href="https://twitter.com/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="saidsef"/></a> 
+  <a href="https://www.credly.com/users/saidsef/" target="blank"> <img  align="center" src="https://img.shields.io/badge/-Credly-FF6B00?style=for-the-badge&logo=credly&logoColor=white" alt="saidsef" /></a>
   <a href="https://www.linkedin.com/in/saidsef/" target="blank"><img align="center" src="https://img.shields.io/badge/-linkedin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="saidsef"/></a>
+  <a href="https://twitter.com/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="saidsef"/></a>
   <a href="https://registry.terraform.io/namespaces/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-Terraform-7B42BC?style=for-the-badge&logo=Terraform&logoColor=white" alt="saidsef"/></a>
   <a href="https://artifacthub.io/packages/search?org=saidsef&sort=relevance&page=1" target="blank"><img align="center" src="https://img.shields.io/badge/-artifacthub-4181C2?style=for-the-badge&logo=artifacthub&logoColor=white" alt="saidsef"/></a>
 </p>
