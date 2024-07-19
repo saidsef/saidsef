@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  workflow_call:
+
+jobs:
+  tfsec:
+    name: tfsec
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    needs: []
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          additional_args: "--force-all-dirs --concise-output --code-theme=dark"
+          version: "latest"
+          github_token: ${{ github.token }}
