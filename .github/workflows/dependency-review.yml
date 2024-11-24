@@ -1,0 +1,37 @@
+name: Dependency Review
+
+on:
+  workflow_call:
+    inputs:
+      allow-ghsas:
+        description: 'Allow known security advisories'
+        required: false
+        type: boolean
+        default: true
+      comment-summary-in-pr:
+        description: 'When to comment results in PR'
+        required: false
+        type: string
+        default: 'always'
+      fail-on-severity:
+        description: 'Always fail on severity security severity'
+        required: false
+        type: string
+        default: 'high'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Complete Configurations are available here: https://github.com/actions/dependency-review-action?tab=readme-ov-file#configuration-options
+jobs:
+  dependency-review:
+    name: Review Dependencies
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v4
+        with:
+          allow-ghsas: ${{ inputs.allow-ghsas }}
+          comment-summary-in-pr: ${{ inputs.comment-summary-in-pr }}
+          fail-on-severity: ${{ inputs.fail-on-severity }}
