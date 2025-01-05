@@ -1,4 +1,4 @@
-name: CI
+name: security
 
 on:
   workflow_call:

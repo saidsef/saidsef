@@ -1,4 +1,4 @@
-name: CI
+name: opentofu
 
 on:
   workflow_call:
@@ -15,8 +15,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pre-commit:
+  opentofu:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       versions: ${{ steps.set-matrix.outputs.versions }}
     steps:
@@ -29,9 +30,6 @@ jobs:
         tflint --version
         tflint --init
         tflint
-    - uses: pre-commit/action@v3.0.1
-      with:
-        extra_args: "-a"
     - name: set matrix
       id: set-matrix
       shell: bash
@@ -69,7 +67,7 @@ jobs:
 
   validate:
     name: Validate
-    needs: [pre-commit]
+    needs: [opentofu]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
@@ -77,7 +75,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        tf-version: ${{ fromJson(needs.pre-commit.outputs.versions) }}
+        tf-version: ${{ fromJson(needs.opentofu.outputs.versions) }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4

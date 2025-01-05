@@ -1,4 +1,4 @@
-name: CI
+name: terraform
 
 on:
   workflow_call:
@@ -11,8 +11,9 @@ on:
         type: string
 
 jobs:
-  pre-commit:
+  terraform:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       versions: ${{ steps.set-matrix.outputs.versions }}
     steps:
@@ -21,9 +22,11 @@ jobs:
       with:
         python-version: 3.11
     - uses: terraform-linters/setup-tflint@v4
-    - uses: pre-commit/action@v3.0.1
-      with:
-        extra_args: "-a"
+    - name: Terraform Lint
+      run: |
+        tflint --version
+        tflint --init
+        tflint
     - name: set matrix
       id: set-matrix
       shell: bash
@@ -61,14 +64,15 @@ jobs:
 
   validate:
     name: Validate
-    needs: [pre-commit]
+    needs: [terraform]
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       pull-requests: write
     strategy:
       fail-fast: true
       matrix:
-        tf-version: ${{ fromJson(needs.pre-commit.outputs.versions) }}
+        tf-version: ${{ fromJson(needs.terraform.outputs.versions) }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
