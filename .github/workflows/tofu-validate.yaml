@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  workflow_call:
+    inputs:
+      start-version:
+        required: false
+        type: string
+      end-version:
+        required: false
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.set-matrix.outputs.versions }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: terraform-linters/setup-tflint@v4
+      with:
+        tflint_wrapper_enabled: true
+    - name: Tofu Lint
+      run: |
+        tflint --version
+        tflint --init
+        tflint
+    - uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: "-a"
+    - name: set matrix
+      id: set-matrix
+      shell: bash
+      run: |
+        # For this to work it needs to be composite action
+        # https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+        # chmod +x ./scripts/generate-versions.sh
+        # echo "::set-output name=versions::$(./scripts/generate-versions.sh)"
+
+        set -ex  # Exit immediately if a command exits with a non-zero status
+
+        # Define start and end versions
+        START_VERSION=${{ inputs.start-version || '6' }} # minimum version (starting 1.6.x)
+        END_VERSION=${{ inputs.end-version || '8' }} # maximum version (up to 1.8.x)
+
+        # Check if jq is installed
+        if ! command -v jq &> /dev/null; then
+          echo "jq could not be found"
+          exit 1
+        fi
+
+        # Generate Tofu versions from 1.6 to 1.8
+        versions=()
+        for i in $(seq $START_VERSION $END_VERSION); do
+          versions+=("1.$i")
+        done
+
+        # Add the latest version
+        versions+=("latest")
+
+        # Print the versions as a JSON array
+        version=$(printf '%s\n' "${versions[@]}" | jq -R -s -c 'split("\n")[:-1]')
+
+        echo "versions=$version" >> $GITHUB_OUTPUT
+
+  validate:
+    name: Validate
+    needs: [pre-commit]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: write
+    strategy:
+      fail-fast: true
+      matrix:
+        tf-version: ${{ fromJson(needs.pre-commit.outputs.versions) }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup Tofu
+      uses: opentofu/setup-opentofu@v1
+      with:
+        tofu_version: ${{ matrix.tf-version }}
+    - name: Tofu Init
+      run: |
+        tofu init -backend=false -upgrade -reconfigure
+    - name: Tofu FMT
+      run: |
+        tofu fmt -check -recursive
+    - name: Tofu Version / Providers
+      run: |
+        tofu version
+        tofu providers
+    - name: Examples Complete Validate
+      run: |
+        cd examples/complete
+        tofu init -backend=false -upgrade -reconfigure
+        tofu validate
+    - name: Example Remote Validate
+      run: |
+        cd examples/remote
+        tofu init -backend=false -upgrade -reconfigure
+        tofu validate
