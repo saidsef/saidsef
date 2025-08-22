@@ -45,3 +45,43 @@
   <a href="https://registry.terraform.io/namespaces/saidsef" target="blank"><img align="center" src="https://img.shields.io/badge/-Terraform-7B42BC?style=for-the-badge&logo=Terraform&logoColor=white" alt="saidsef"/></a>
   <a href="https://artifacthub.io/packages/search?org=saidsef&sort=relevance&page=1" target="blank"><img align="center" src="https://img.shields.io/badge/-artifacthub-4181C2?style=for-the-badge&logo=artifacthub&logoColor=white" alt="saidsef"/></a>
 </p>
+
+<p>
+  <canvas id="eventPieChart" width="400" height="400"></canvas>
+  <script>
+    async function drawPieChart() {
+      const response = await fetch('https://api.github.com/users/saidsef/events');
+      const events = await response.json();
+
+      // Aggregate counts by event type
+      const counts = events.reduce((acc, ev) => {
+        acc[ev.type] = (acc[ev.type] || 0) + 1;
+        return acc;
+      }, {});
+
+      const labels = Object.keys(counts);
+      const data = Object.values(counts);
+
+      const ctx = document.getElementById('eventPieChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels,
+          datasets: [{
+            data,
+            backgroundColor: labels.map((_, i) => `hsl(${(i * 360) / labels.length}, 70%, 60%)`),
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Live Event Type Distribution for saidsef'
+            }
+          }
+        }
+      });
+    drawPieChart();
+  </script>
+</p>
