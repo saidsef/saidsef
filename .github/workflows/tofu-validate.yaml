@@ -22,7 +22,7 @@ jobs:
       versions: ${{ steps.set-matrix.outputs.versions }}
     steps:
     - uses: actions/checkout@v5
-    - uses: terraform-linters/setup-tflint@v4
+    - uses: terraform-linters/setup-tflint@v5
       with:
         tflint_wrapper_enabled: true
     - name: Tofu Lint
