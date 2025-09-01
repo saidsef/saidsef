@@ -16,6 +16,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@v3
         with:
           subject-path: '*.tf'
