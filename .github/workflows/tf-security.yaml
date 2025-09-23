@@ -26,7 +26,7 @@ jobs:
           python-version: 3.11
       - name: Test with Checkov
         id: checkov
-        uses: bridgecrewio/checkov-action@12
+        uses: bridgecrewio/checkov-action@master
         with:
           directory: .
           framework: terraform
