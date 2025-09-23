@@ -10,6 +10,7 @@ jobs:
     permissions:
       actions: read
       pull-requests: write
+      security-events: write
     needs: []
     steps:
       - name: Checkout code
@@ -29,4 +30,14 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: .
+          download_external_modules: true
           framework: terraform
+          quiet: true
+          soft_fail: true
+          output_format: cli,sarif
+          output_file_path: console,results.sarif
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: results.sarif
