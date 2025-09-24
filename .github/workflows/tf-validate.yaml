@@ -40,7 +40,7 @@ jobs:
 
         # Define start and end versions
         START_VERSION=${{ inputs.start-version || '3' }} # minimum version
-        END_VERSION=${{ inputs.end-version || '11' }} # maximum version (up to 1.11.x)
+        END_VERSION=${{ inputs.end-version || '13' }} # maximum version (up to 1.13.x)
 
         # Check if jq is installed
         if ! command -v jq &> /dev/null; then
@@ -48,7 +48,7 @@ jobs:
           exit 1
         fi
 
-        # Generate Terraform versions from 1.3 to 1.11
+        # Generate Terraform versions from 1.3 to 1.13
         versions=()
         for i in $(seq $START_VERSION $END_VERSION); do
           versions+=("1.$i")

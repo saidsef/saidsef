@@ -43,7 +43,7 @@ jobs:
 
         # Define start and end versions
         START_VERSION=${{ inputs.start-version || '6' }} # minimum version (starting 1.6.x)
-        END_VERSION=${{ inputs.end-version || '8' }} # maximum version (up to 1.8.x)
+        END_VERSION=${{ inputs.end-version || '10' }} # maximum version (up to 1.10.x)
 
         # Check if jq is installed
         if ! command -v jq &> /dev/null; then
@@ -51,7 +51,7 @@ jobs:
           exit 1
         fi
 
-        # Generate Tofu versions from 1.6 to 1.8
+        # Generate Tofu versions from 1.6 to 1.10
         versions=()
         for i in $(seq $START_VERSION $END_VERSION); do
           versions+=("1.$i")
