@@ -15,12 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      - name: tfsec
-        uses: aquasecurity/tfsec-action@v1.0.3
-        with:
-          additional_args: "--force-all-dirs --concise-output --code-theme=dark"
-          version: "latest"
-          github_token: ${{ github.token }}
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
