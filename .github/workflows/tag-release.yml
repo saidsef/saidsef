@@ -126,9 +126,22 @@ jobs:
                 hasMinorChange = true;
               }
               
-              // Package.json version updates (dependencies)
-              if (line.includes('package.json') || (
-                line.startsWith('+') && trimmedLine.match(/"[^"]+": "[\^~]?\d+\.\d+\.\d+"/))) {
+              // Package.json dependency version updates (dependencies only)
+              // Track if inside a dependency block
+              const dependencyBlocks = ['"dependencies": {', '"devDependencies": {', '"peerDependencies": {', '"optionalDependencies": {'];
+              if (line.startsWith('+') && dependencyBlocks.some(dep => dep === trimmedLine)) {
+                var inDependencyBlock = true;
+              }
+              if (line.startsWith('-') && dependencyBlocks.some(dep => dep === trimmedLine)) {
+                var inDependencyBlock = false;
+              }
+              // Only match semver-like value if inside a dependency block
+              if (typeof inDependencyBlock === 'undefined') inDependencyBlock = false;
+              if (
+                inDependencyBlock &&
+                line.startsWith('+') &&
+                trimmedLine.match(/"[^"]+": "[\^~]?\d+\.\d+\.\d+"/)
+              ) {
                 hasMinorChange = true;
               }
             }
