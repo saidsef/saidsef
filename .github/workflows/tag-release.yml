@@ -58,7 +58,7 @@ jobs:
 
           function getDiffSinceTag(lastTag) {
             const command = lastTag === 'v0.0.0'
-              ? 'git diff HEAD'
+              ? 'git diff --name-status HEAD'
               : `git diff ${lastTag}..HEAD`;
             try {
               return execSync(command, { encoding: 'utf8' });
