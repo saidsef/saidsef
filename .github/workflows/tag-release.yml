@@ -182,7 +182,7 @@ jobs:
           execSync(`git tag -a ${newTag} -m "Release ${newTag}"`);
           execSync(`git push origin ${newTag}`);
 
-          // Generate local release notes (to be discarded after job)
+          // Generate local release notes for use in the next GitHub release step
           const releaseNotes = createReleaseNotes(newTag, commits, lastTag);
           fs.writeFileSync('release-notes.md', releaseNotes);
 
