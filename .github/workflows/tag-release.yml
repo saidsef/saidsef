@@ -1,0 +1,215 @@
+name: Auto Tag and Release
+on:
+  workflow_call:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Setup NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Create and run release script
+        run: |
+          cat > release.js << 'EOF'
+          const { execSync } = require('child_process');
+          const fs = require('fs');
+
+          function getLatestTag() {
+            try {
+              return execSync('git describe --tags --abbrev=0', { encoding: 'utf8' }).trim();
+            } catch {
+              return 'v0.0.0'; // No tags found, start from v0.0.0
+            }
+          }
+
+          function incrementVersion(version, type) {
+            let [major, minor, patch] = version.replace('v', '').split('.').map(Number);
+            if (type === 'major') {
+              major += 1;
+              minor = 0;
+              patch = 0;
+            } else if (type === 'minor') {
+              minor += 1;
+              patch = 0;
+            } else {
+              patch += 1;
+            }
+            return `v${major}.${minor}.${patch}`;
+          }
+
+          function getCommitsSinceTag(lastTag) {
+            const command = lastTag === 'v0.0.0'
+              ? 'git log --oneline --format="- %s (%h)"'
+              : `git log ${lastTag}..HEAD --oneline --format="- %s (%h)"`;
+            try {
+              return execSync(command, { encoding: 'utf8' }).trim();
+            } catch {
+              return '- Initial release';
+            }
+          }
+
+          function getDiffSinceTag(lastTag) {
+            const command = lastTag === 'v0.0.0'
+              ? 'git diff --name-status HEAD'
+              : `git diff ${lastTag}..HEAD`;
+            try {
+              return execSync(command, { encoding: 'utf8' });
+            } catch {
+              return '';
+            }
+          }
+
+          function classifyVersion(diff) {
+            const lines = diff.split('\n');
+            let hasMajorChange = false;
+            let hasMinorChange = false;
+            
+            for (const line of lines) {
+              const trimmedLine = line.trim();
+              
+              // MAJOR: Breaking changes
+              // Terraform: Resource deletion or destructive changes
+              if (line.startsWith('-resource "') || 
+                  (line.startsWith('-') && (
+                    trimmedLine.includes('destroy') ||
+                    trimmedLine.includes('delete_protection = false') ||
+                    trimmedLine.includes('force_destroy = true')
+                  ))) {
+                hasMajorChange = true;
+              }
+              
+              // Python: Breaking API changes
+              if (line.includes('def ') && line.startsWith('-')) {
+                hasMajorChange = true;
+              }
+              if (line.includes('class ') && line.startsWith('-')) {
+                hasMajorChange = true;
+              }
+              
+              // Node.js/TypeScript: Breaking changes in package.json or exports
+              if (trimmedLine.includes('"main":') && line.startsWith('-')) {
+                hasMajorChange = true;
+              }
+              if (trimmedLine.includes('"exports":') && line.startsWith('-')) {
+                hasMajorChange = true;
+              }
+              if (line.includes('export ') && line.startsWith('-')) {
+                hasMajorChange = true;
+              }
+              
+              // MINOR: New features
+              // Terraform: New resources, variables, outputs
+              if (line.startsWith('+resource "') || 
+                  line.startsWith('+variable "') || 
+                  line.startsWith('+output "')) {
+                hasMinorChange = true;
+              }
+              
+              // Python: New functions, classes, methods
+              if ((line.includes('def ') || line.includes('class ')) && line.startsWith('+')) {
+                hasMinorChange = true;
+              }
+              
+              // Node.js/TypeScript: New exports, dependencies
+              if (line.includes('export ') && line.startsWith('+')) {
+                hasMinorChange = true;
+              }
+              if (trimmedLine.includes('"dependencies":') && line.startsWith('+')) {
+                hasMinorChange = true;
+              }
+              
+              // Package.json dependency version updates (dependencies only)
+              // Track if inside a dependency block
+              const dependencyBlocks = ['"dependencies": {', '"devDependencies": {', '"peerDependencies": {', '"optionalDependencies": {'];
+              if (line.startsWith('+') && dependencyBlocks.some(dep => dep === trimmedLine)) {
+                var inDependencyBlock = true;
+              }
+              if (line.startsWith('-') && dependencyBlocks.some(dep => dep === trimmedLine)) {
+                var inDependencyBlock = false;
+              }
+              // Only match semver-like value if inside a dependency block
+              if (typeof inDependencyBlock === 'undefined') inDependencyBlock = false;
+              if (
+                inDependencyBlock &&
+                line.startsWith('+') &&
+                trimmedLine.match(/"[^"]+": "[\^~]?\d+\.\d+\.\d+"/)
+              ) {
+                hasMinorChange = true;
+              }
+            }
+            
+            // Priority: Major > Minor > Patch
+            if (hasMajorChange) return 'major';
+            if (hasMinorChange) return 'minor';
+            return 'patch';
+          }
+
+          function createReleaseNotes(newTag, commits, lastTag) {
+            const date = new Date().toISOString().split('T')[0];
+            const compareUrl = lastTag === 'v0.0.0'
+              ? `https://github.com/${process.env.GITHUB_REPOSITORY}/commits/${newTag}`
+              : `https://github.com/${process.env.GITHUB_REPOSITORY}/compare/${lastTag}...${newTag}`;
+            return `## Release ${newTag} - ${date}
+
+            ### Changes
+            ${commits}
+
+            **Full Changelog**: ${compareUrl}`;
+          }
+
+          // Main execution
+          const lastTag = getLatestTag();
+          const diff = getDiffSinceTag(lastTag);
+          const releaseType = classifyVersion(diff);
+          const newTag = incrementVersion(lastTag, releaseType);
+          const commits = getCommitsSinceTag(lastTag);
+
+          console.log(`Creating release ${newTag} from ${lastTag} (type: ${releaseType})`);
+
+          // Configure git
+          execSync('git config user.name "github-actions[bot]"');
+          execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
+
+          // Create and push tag
+          execSync(`git tag -a ${newTag} -m "Release ${newTag}"`);
+          execSync(`git push origin ${newTag}`);
+
+          // Generate local release notes for use in the next GitHub release step
+          const releaseNotes = createReleaseNotes(newTag, commits, lastTag);
+          fs.writeFileSync('release-notes.md', releaseNotes);
+
+          console.log(`Tag ${newTag} created and pushed`);
+          console.log('Release notes:', releaseNotes);
+          EOF
+
+          node release.js
+
+      - name: Create GitHub Release
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            
+            const newTag = execSync('git describe --tags --abbrev=0', { encoding: 'utf8' }).trim();
+            const releaseNotes = fs.readFileSync('release-notes.md', 'utf8');
+            
+            const release = await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: newTag,
+              name: `Release ${newTag}`,
+              body: releaseNotes,
+              draft: false,
+              prerelease: false
+            });
+            
+            console.log(`Release created: ${release.data.html_url}`);
