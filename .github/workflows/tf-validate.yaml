@@ -21,7 +21,7 @@ jobs:
     - uses: actions/setup-python@v6
       with:
         python-version: 3.11
-    - uses: terraform-linters/setup-tflint@v5
+    - uses: terraform-linters/setup-tflint@v6
     - name: Terraform Lint
       run: |
         tflint --version
