@@ -15,7 +15,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - uses: actions/attest-build-provenance@v3
         with:
           subject-path: '*.tf'
