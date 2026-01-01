@@ -36,7 +36,7 @@
 ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white)
 ![Anthropic](https://img.shields.io/badge/-Anthropic-FF1744?style=for-the-badge&logo=Anthropic&logoColor=white)
 
-<p align="center"><img align="center" src="https://github-readme-stats.vercel.app/api?username=saidsef&show_icons=true&theme=transparent&include_all_commits=true&count_private=true&show=reviews,prs_merged,prs_merged_percentage" alt="saidsef" /></p>
+<p align="center"><img align="center" src="https://stats.saidsef.co.uk/github/stats" alt="saidsef" /></p>
 
 <p align="center">
   <a href="https://www.credly.com/users/saidsef/" target="blank"> <img  align="center" src="https://img.shields.io/badge/-Credly-FF6B00?style=for-the-badge&logo=credly&logoColor=white" alt="saidsef" /></a>
