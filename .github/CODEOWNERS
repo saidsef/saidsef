@@ -1,0 +1,12 @@
+# Global owners - saidsef owns everything by default
+* @saidsef
+
+# GitHub Actions workflows
+/.github/workflows/ @saidsef
+
+# Documentation
+*.md @saidsef
+
+# Configuration files
+/.github/dependabot.yaml @saidsef
+/.github/labeler.yaml @saidsef
