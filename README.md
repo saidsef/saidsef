@@ -10,7 +10,7 @@
 ![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Golang](https://img.shields.io/badge/-Golang-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Terraform / Cloud](https://img.shields.io/badge/-Terraform&nbsp;&#47;&nbsp;Cloud-623CE4?style=for-the-badge&logo=Terraform&logoColor=white)
-![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=for-the-badge&logo=node.js&logoColor=white) 
+![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=Python&logoColor=white)
 ![HELM](https://img.shields.io/badge/-HELM-FFFFFF?style=for-the-badge&logo=HELM&logoColor=0F1689)
 ![Prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white)

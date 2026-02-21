@@ -71,13 +71,13 @@ jobs:
             const lines = diff.split('\n');
             let hasMajorChange = false;
             let hasMinorChange = false;
-            
+
             for (const line of lines) {
               const trimmedLine = line.trim();
-              
+
               // MAJOR: Breaking changes
               // Terraform: Resource deletion or destructive changes
-              if (line.startsWith('-resource "') || 
+              if (line.startsWith('-resource "') ||
                   (line.startsWith('-') && (
                     trimmedLine.includes('destroy') ||
                     trimmedLine.includes('delete_protection = false') ||
@@ -85,7 +85,7 @@ jobs:
                   ))) {
                 hasMajorChange = true;
               }
-              
+
               // Python: Breaking API changes
               if (line.includes('def ') && line.startsWith('-')) {
                 hasMajorChange = true;
@@ -93,7 +93,7 @@ jobs:
               if (line.includes('class ') && line.startsWith('-')) {
                 hasMajorChange = true;
               }
-              
+
               // Node.js/TypeScript: Breaking changes in package.json or exports
               if (trimmedLine.includes('"main":') && line.startsWith('-')) {
                 hasMajorChange = true;
@@ -104,20 +104,20 @@ jobs:
               if (line.includes('export ') && line.startsWith('-')) {
                 hasMajorChange = true;
               }
-              
+
               // MINOR: New features
               // Terraform: New resources, variables, outputs
-              if (line.startsWith('+resource "') || 
-                  line.startsWith('+variable "') || 
+              if (line.startsWith('+resource "') ||
+                  line.startsWith('+variable "') ||
                   line.startsWith('+output "')) {
                 hasMinorChange = true;
               }
-              
+
               // Python: New functions, classes, methods
               if ((line.includes('def ') || line.includes('class ')) && line.startsWith('+')) {
                 hasMinorChange = true;
               }
-              
+
               // Node.js/TypeScript: New exports, dependencies
               if (line.includes('export ') && line.startsWith('+')) {
                 hasMinorChange = true;
@@ -125,7 +125,7 @@ jobs:
               if (trimmedLine.includes('"dependencies":') && line.startsWith('+')) {
                 hasMinorChange = true;
               }
-              
+
               // Package.json dependency version updates (dependencies only)
               // Track if inside a dependency block
               const dependencyBlocks = ['"dependencies": {', '"devDependencies": {', '"peerDependencies": {', '"optionalDependencies": {'];
@@ -145,7 +145,7 @@ jobs:
                 hasMinorChange = true;
               }
             }
-            
+
             // Priority: Major > Minor > Patch
             if (hasMajorChange) return 'major';
             if (hasMinorChange) return 'minor';
@@ -198,10 +198,10 @@ jobs:
           script: |
             const fs = require('fs');
             const { execSync } = require('child_process');
-            
+
             const newTag = execSync('git describe --tags --abbrev=0', { encoding: 'utf8' }).trim();
             const releaseNotes = fs.readFileSync('release-notes.md', 'utf8');
-            
+
             const release = await github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -211,5 +211,5 @@ jobs:
               draft: false,
               prerelease: false
             });
-            
+
             console.log(`Release created: ${release.data.html_url}`);
