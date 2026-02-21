@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question
+    url: https://github.com/saidsef/saidsef/discussions
+    about: Ask a question or start a discussion
+  - name: Security Issue
+    url: https://github.com/saidsef/saidsef/blob/main/.github/SECURITY.md
+    about: Report a security vulnerability
