@@ -32,7 +32,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v4
+        uses: actions/dependency-review-action@v5
         with:
           allow-ghsas: ${{ inputs.allow-ghsas }}
           comment-summary-in-pr: ${{ inputs.comment-summary-in-pr }}
