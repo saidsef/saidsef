@@ -36,11 +36,13 @@
 ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white)
 ![Anthropic](https://img.shields.io/badge/-Anthropic-FF1744?style=for-the-badge&logo=Anthropic&logoColor=white)
 
-<picture>
-  <source media="(prefers-color-scheme: dark)"  srcset="https://stats.saidsef.co.uk/github/stats?theme=dark">
-  <source media="(prefers-color-scheme: light)" srcset="https://stats.saidsef.co.uk/github/stats?theme=light">
-  <img src="https://stats.saidsef.co.uk/github/stats" alt="Said Sef's GitHub stats">
-</picture>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"  srcset="https://stats.saidsef.co.uk/github/stats?theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://stats.saidsef.co.uk/github/stats?theme=light">
+    <img src="https://stats.saidsef.co.uk/github/stats" alt="Said Sef's GitHub stats">
+  </picture>
+</div>
 
 <p align="center">
   <a href="https://www.credly.com/users/saidsef/" target="blank"> <img  align="center" src="https://img.shields.io/badge/-Credly-FF6B00?style=for-the-badge&logo=credly&logoColor=white" alt="saidsef" /></a>
